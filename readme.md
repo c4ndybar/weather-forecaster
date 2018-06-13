@@ -61,3 +61,5 @@ The forecast for Las Vegas calls for lots of sun.
 ## Implementation
 Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast for the city.
 
+The function `getForecastDescription` in `src/forecaster.js` should return the description as described in the requirements.
+
