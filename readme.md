@@ -11,17 +11,18 @@ npx jasmine init
 ```
 
 ## Requirements
-Make a weather forecast application that gives the weather forecast for the current day.
+Make a weather forecast application that gives the a plain text description for the current day's weather forecast (like a weatherman might provide).
 The application should prompt for a city name and them provide the forecast for the city in the following format.
 ```
-The forecast for <city> is <temperature description>, <humidity description>, <wind description>, and calls for <weather state>.
+<city> will be <temperature description>, <humidity description>, and <weather state description>.
 ```
 An example in plain text...
 ```
-The forecast for Las Vegas is hot, dry, windy, and calls for lots of sun.
+Las Vegas will be hot, dry, and sunny.
 ```
 
-#### Rules for forecast componenets
+### Determining the text to display
+Use this table to determine when to say it's hot/cold, humid/dry, etc.
 
 | Weather component| Value         | Description Text  |
 | ---------------- |:-------------:|:------------------|
@@ -31,32 +32,31 @@ The forecast for Las Vegas is hot, dry, windy, and calls for lots of sun.
 | humidity         | >= 85 | humid  |
 | humidity         | <= 10      |   dry |
 | humidity    | > 10 and < 85      |    _no description_ |
-| wind         | >= 10 | windy  |
-| wind         | <= 1      |   calm |
-| wind    | > 1 and < 10      |    _no description_ |
 
-The weather state will come from the [metaweather api](https://www.metaweather.com/api/).  Use the weather state abbreviation code to determine the description text.
+
+The weather state description will be based on the response from the[metaweather api](https://www.metaweather.com/api/).  Use the weather state abbreviation code to determine the description text.
+
 | Weather state abbreviation code | Description Text  |
-| ---------------- |:-------------:|:------------------|
-| sn | snow |
-| sl | sleet |
-| h | hail |
-| t | thunderstorms |
-| hr | heavy rain |
-| lr | light drizzle |
-| s | showers |
-| hc | cloudy skies |
-| lc | partly sunny skies |
-| c | lots of sun |
+| ---------------- |:------------------|
+| sn | snowy |
+| sl | sleety |
+| h | haily |
+| t | stormy |
+| hr | very rainy |
+| lr | slightly rainy|
+| s | rainy |
+| hc | cloudy |
+| lc | partly sunny |
+| c | sunny |
 
 The forecast description should read normally even if certain parts of the forecast are omitted.
-Fore example, if there is only a description for wind (and none for temperature or humidity), the forecast would be the following...
+Fore example, if there is only a description for temperature (and none for humidity), the forecast would be the following...
 ```
-The forecast for Las Vegas is windy and calls for lots of sun.
+Las Vegas will be hot and sunny.
 ```
 If there is no description for anything except the weather state, then only include that...
 ```
-The forecast for Las Vegas calls for lots of sun.
+Las Vegas will be sunny.
 ```
 ## Implementation
 Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast for the city.
