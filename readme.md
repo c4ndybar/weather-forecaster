@@ -29,8 +29,8 @@ Use this table to determine when to say it's hot/cold, humid/dry, etc.
 | temperature         | >= 80 | hot  |
 | temperature         | <= 55      |   cold |
 | temperature    | > 55 and < 80      |    _no description_ |
-| humidity         | >= 85 | humid  |
-| humidity         | <= 10      |   dry |
+| humidity         | >= 60 | humid  |
+| humidity         | <= 20 | dry |
 | humidity    | > 10 and < 85      |    _no description_ |
 
 
@@ -62,6 +62,7 @@ Las Vegas will be sunny.
 If the weather API does not have a forecast available for the provided city, display an appropriate message.
 ## Implementation
 Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast for the city.
+Note that the temperatures returned by the API are in Celcius.
 
 The function `getForecastDescription` in `src/forecaster.js` should return the description as described in the requirements.
 

@@ -134,7 +134,7 @@ describe('unit.weatherAdapter', () => {
   it('gets the forecast temperature', (done) => {
     weatherAdapter.getTodaysForecastForCity('York')
       .then((forecast) => {
-        expect(forecast.temperature).toEqual(16)
+        expect(forecast.temperature).toEqual(61)
       })
       .catch(fail)
       .then(done)

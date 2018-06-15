@@ -31,10 +31,14 @@ async function getCityId(cityName) {
 
 function transformForecast(forecast) {
   return {
-    temperature: Math.round(forecast.the_temp),
+    temperature: Math.round(celciusToFahrenheit(forecast.the_temp)),
     humidity: forecast.humidity,
     weatherState: weatherStateFromAbbreviation(forecast.weather_state_abbr)
   }
+}
+
+function celciusToFahrenheit(temp) {
+  return (temp * 9 / 5) + 32
 }
 
 function weatherStateFromAbbreviation(abbreviation) {

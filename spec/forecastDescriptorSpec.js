@@ -133,29 +133,29 @@ describe('unit.forecastDescriptor.describe', () => {
   })
 
   describe('with humidity', () => {
-    it('is humid outside if humidity is at 90 percent', () => {
-      forecast.humidity = 90
+    it('is humid outside if humidity is at 60 percent', () => {
+      forecast.humidity = 60
       let description = forecastDescriptor.describe('London', forecast)
 
       expect(description).toEqual('London will be humid and sunny.')
     })
 
     it('is humid outside if humidity is at 100 percent', () => {
-      forecast.humidity = 90
+      forecast.humidity = 100
       let description = forecastDescriptor.describe('London', forecast)
 
       expect(description).toEqual('London will be humid and sunny.')
     })
 
-    it('does not include humidity if value is just under 90', () => {
-      forecast.humidity = 89
+    it('does not include humidity if value is just under 59', () => {
+      forecast.humidity = 59
       let description = forecastDescriptor.describe('London', forecast)
 
       expect(description).toEqual('London will be sunny.')
     })
 
-    it('is dry outside if humidity is at 10 percent', () => {
-      forecast.humidity = 10
+    it('is dry outside if humidity is at 20 percent', () => {
+      forecast.humidity = 20
       let description = forecastDescriptor.describe('London', forecast)
 
       expect(description).toEqual('London will be dry and sunny.')
@@ -168,8 +168,8 @@ describe('unit.forecastDescriptor.describe', () => {
       expect(description).toEqual('London will be dry and sunny.')
     })
 
-    it('does not include humidity if value is just above 10', () => {
-      forecast.humidity = 11
+    it('does not include humidity if value is just above 20', () => {
+      forecast.humidity = 21
       let description = forecastDescriptor.describe('London', forecast)
 
       expect(description).toEqual('London will be sunny.')

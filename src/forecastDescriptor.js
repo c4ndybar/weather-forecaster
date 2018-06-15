@@ -32,9 +32,9 @@ function getTemperatureDescription(forecast) {
 }
 
 function getHumidityDescription(forecast) {
-  if (forecast.humidity >= 90) {
+  if (forecast.humidity >= 60) {
     return 'humid'
-  } else if (forecast.humidity <= 10) {
+  } else if (forecast.humidity <= 20) {
     return 'dry'
   }
 }
