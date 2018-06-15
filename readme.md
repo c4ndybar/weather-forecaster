@@ -58,6 +58,8 @@ If there is no description for anything except the weather state, then only incl
 ```
 Las Vegas will be sunny.
 ```
+
+If the weather API does not have a forecast available for the provided city, display an appropriate message.
 ## Implementation
 Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast for the city.
 

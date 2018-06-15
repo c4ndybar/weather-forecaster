@@ -8,7 +8,6 @@ describe('unit.forecastDescriptor.describe', () => {
     forecast = {
       temperature: 70,
       humidity: 50,
-      windSpeed: 5,
       weatherState: weatherStates.sunny
     }
   })
