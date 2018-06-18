@@ -1,13 +1,13 @@
 const requestPromise = require('request-promise')
 
 module.exports = {
-  searchCitiesByName, getForecast
+  searchCitiesByName, getForecast,
 }
 
 function searchCitiesByName(cityName) {
-  let options = {
+  const options = {
     method: 'GET',
-    url: `https://www.metaweather.com/api/location/search/`,
+    url: 'https://www.metaweather.com/api/location/search/',
     qs: {query: cityName},
     rejectUnauthorized: false,
     json: true,
@@ -17,7 +17,7 @@ function searchCitiesByName(cityName) {
 }
 
 function getForecast(cityId, date) {
-  let options = {
+  const options = {
     method: 'GET',
     url: `https://www.metaweather.com/api/location/${cityId}/${date.getFullYear()}/${date.getMonth()}/${date.getDate()}/`,
     rejectUnauthorized: false,

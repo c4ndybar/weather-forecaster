@@ -1,27 +1,26 @@
 const weatherStates = require('../weatherStates')
-const weatherClient = require('../clients/weatherClient')
+const metaWeatherClient = require('../clients/metaWeatherApiClient')
 
-class ForecastNotFoundError extends Error {}
+class ForecastNotFoundError extends Error {
+}
 
 module.exports = {
   weatherAdapter: {
-    getTodaysForecastForCity
+    async getTodaysForecastForCity(cityName) {
+      const cityId = await getCityId(cityName)
+
+      const forecasts = await metaWeatherClient.getForecast(cityId, new Date())
+
+      return transformForecast(forecasts[0])
+    },
   },
-  ForecastNotFoundError
+  ForecastNotFoundError,
 }
 
-async function getTodaysForecastForCity(cityName) {
-  let cityId = await getCityId(cityName)
-
-  let forecasts = await weatherClient.getForecast(cityId, new Date())
-  let forecast = forecasts[0]
-
-  return transformForecast(forecast)
-}
 
 async function getCityId(cityName) {
-  let cities = await weatherClient.searchCitiesByName(cityName)
-  let city = cities.find((city) => city.title.toLowerCase() === cityName.toLowerCase())
+  const cities = await metaWeatherClient.searchCitiesByName(cityName)
+  const city = cities.find((city) => city.title.toLowerCase() === cityName.toLowerCase())
 
   if (!city) {
     throw new ForecastNotFoundError()
@@ -31,16 +30,16 @@ async function getCityId(cityName) {
 
 function transformForecast(forecast) {
   return {
-    temperature: Math.round(celciusToFahrenheit(forecast.the_temp)),
+    temperature: Math.round(celsiusToFahrenheit(forecast.the_temp)),
     humidity: forecast.humidity,
-    weatherState: weatherStateFromAbbreviation(forecast.weather_state_abbr)
+    weatherState: getWeatherStateFromApiCode(forecast.weather_state_abbr),
   }
 }
 
-function celciusToFahrenheit(temp) {
+function celsiusToFahrenheit(temp) {
   return (temp * 9 / 5) + 32
 }
 
-function weatherStateFromAbbreviation(abbreviation) {
-  return Object.values(weatherStates).find((state) => state.apiCode === abbreviation)
+function getWeatherStateFromApiCode(apiCode) {
+  return Object.values(weatherStates).find((state) => state.apiCode === apiCode)
 }

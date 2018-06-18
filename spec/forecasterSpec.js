@@ -5,14 +5,14 @@ const forecaster = require('../src/forecaster')
 
 describe('unit.forecaster', () => {
   let getForecastSpy, describeSpy
-  let forecast = {
+  const forecast = {
     temperature: 70,
     humidity: 50,
     windSpeed: 5,
     weatherState: weatherStates.sunny,
   }
 
-  let forecastDescription = 'London will be sunny.'
+  const forecastDescription = 'London will be sunny.'
 
   beforeEach(() => {
     getForecastSpy = spyOn(weatherAdapter, 'getTodaysForecastForCity')
@@ -23,7 +23,7 @@ describe('unit.forecaster', () => {
   })
 
   it('gets the forecast for the provided city', (done) => {
-    forecaster.getForecastDescription('London')
+    forecaster.getTodaysForecastDescription('London')
       .then((forecastDescription) => {
         expect(getForecastSpy).toHaveBeenCalledWith('London')
         expect(describeSpy).toHaveBeenCalledWith('London', forecast)
@@ -36,7 +36,7 @@ describe('unit.forecaster', () => {
   it('if no forecast is available for the city then give a generic message', (done) => {
     getForecastSpy.and.returnValue(Promise.reject(new ForecastNotFoundError()))
 
-    forecaster.getForecastDescription('London')
+    forecaster.getTodaysForecastDescription('London')
       .then((forecastDescription) => {
         expect(getForecastSpy).toHaveBeenCalledWith('London')
         expect(describeSpy).not.toHaveBeenCalled()
@@ -47,7 +47,7 @@ describe('unit.forecaster', () => {
   })
 
   it('if no city name is provided, ask the user to provide a city.', (done) => {
-    forecaster.getForecastDescription()
+    forecaster.getTodaysForecastDescription()
       .then((forecastDescription) => {
         expect(getForecastSpy).not.toHaveBeenCalled()
         expect(describeSpy).not.toHaveBeenCalled()

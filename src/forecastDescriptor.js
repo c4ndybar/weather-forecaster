@@ -1,9 +1,9 @@
 
 module.exports = {
   describe: (city, forecast) => {
-    let temperature = getTemperatureDescription(forecast )
-    let humidity = getHumidityDescription(forecast)
-    let weatherState = forecast.weatherState.description
+    const temperature = getTemperatureDescription(forecast )
+    const humidity = getHumidityDescription(forecast)
+    const weatherState = forecast.weatherState.description
 
     return buildDescription(city, temperature, humidity, weatherState)
   },

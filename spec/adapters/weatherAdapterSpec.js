@@ -1,14 +1,14 @@
 const {weatherAdapter, ForecastNotFoundError} = require('../../src/adapters/weatherAdapter')
-const weatherClient = require('../../src/clients/weatherClient')
+const weatherClient = require('../../src/clients/metaWeatherApiClient')
 const timekeeper = require('timekeeper')
 const weatherStates = require('../../src/weatherStates')
 
 describe('unit.weatherAdapter', () => {
   let searchCitySpy, getForecastSpy, mockedForecast
-  let cityId = 39398
+  const cityId = 39398
 
   beforeEach(() => {
-    let time = new Date(2018, 6, 15)
+    const time = new Date(2018, 6, 15)
     timekeeper.freeze(time)
 
     searchCitySpy = spyOn(weatherClient, 'searchCitiesByName')
@@ -113,7 +113,7 @@ describe('unit.weatherAdapter', () => {
   it('gets the forecast for today', (done) => {
     weatherAdapter.getTodaysForecastForCity('York')
       .then(() => {
-        let forecastDate = getForecastSpy.calls.argsFor(0)[1]
+        const forecastDate = getForecastSpy.calls.argsFor(0)[1]
         expect(forecastDate.getFullYear()).toEqual(2018)
         expect(forecastDate.getMonth()).toEqual(6)
         expect(forecastDate.getDate()).toEqual(15)

@@ -1,14 +1,6 @@
-# FizzBuzz
+# Weather Forecaster
 
-An implementation of FizzBuzz.
-
-## Getting started
-
-Install Jasmine
-```
-npm install --save-dev jasmine
-npx jasmine init
-```
+An application that will provide the weather forecast in plain English for the provided city name.
 
 ## Requirements
 Make a weather forecast application that gives the a plain text description for the current day's weather forecast (like a weatherman might provide).
@@ -26,15 +18,15 @@ Use this table to determine when to say it's hot/cold, humid/dry, etc.
 
 | Weather component| Value         | Description Text  |
 | ---------------- |:-------------:|:------------------|
-| temperature         | >= 80 | hot  |
-| temperature         | <= 55      |   cold |
-| temperature    | > 55 and < 80      |    _no description_ |
+| temperature         | >= 80°F | hot  |
+| temperature         | <= 55°F     |   cold |
+| temperature    | > 55°F and < 80°F      |    _no description_ |
 | humidity         | >= 60 | humid  |
 | humidity         | <= 20 | dry |
 | humidity    | > 10 and < 85      |    _no description_ |
 
 
-The weather state description will be based on the response from the[metaweather api](https://www.metaweather.com/api/).  Use the weather state abbreviation code to determine the description text.
+The weather state description will be based on the response from the [metaweather api](https://www.metaweather.com/api/).  Use the weather state abbreviation code to determine the description text.
 
 | Weather state abbreviation code | Description Text  |
 | ---------------- |:------------------|
@@ -49,20 +41,37 @@ The weather state description will be based on the response from the[metaweather
 | lc | partly sunny |
 | c | sunny |
 
-The forecast description should read normally even if certain parts of the forecast are omitted.
-Fore example, if there is only a description for temperature (and none for humidity), the forecast would be the following...
+### Examples
+
+Example for Las Vegas on June, 15th...
+```json
+[
+  {
+    "weather_state_abbr": "c",
+    "applicable_date": "2018-06-15",
+    "the_temp": 50, //this is in Celsius
+    "humidity": 10
+  },
+  {...},
+  {...}
+]
+// expected description
+// Las Vegas will be hot, dry, and sunny.
+```
+If humidity was at 20, it would be omitted and the description would read...
 ```
 Las Vegas will be hot and sunny.
 ```
-If there is no description for anything except the weather state, then only include that...
+If the temperature was only 70°F and was also omitted, the description would read...
 ```
 Las Vegas will be sunny.
 ```
+The description should always read in a gramatically correct way regardless of which forecast components are omitted from the description.
 
-If the weather API does not have a forecast available for the provided city, display an appropriate message.
+Finally, If the weather API does not have a forecast available for the provided city, display an appropriate message.
 ## Implementation
 Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast for the city.
-Note that the temperatures returned by the API are in Celcius.
+Note that the temperatures returned by the API are in Celsius.
 
 The function `getForecastDescription` in `src/forecaster.js` should return the description as described in the requirements.
-
+You can run the `index.js` script from the command line to run the app end to end.

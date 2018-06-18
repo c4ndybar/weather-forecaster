@@ -1,9 +1,11 @@
 const proxyquire = require('proxyquire')
 const requestSpy = jasmine.createSpy('requestSpy')
-const weatherClient = proxyquire('../../src/clients/weatherClient', {'request-promise': requestSpy})
+const metaWeatherClient = proxyquire('../../src/clients/metaWeatherApiClient', {'request-promise': requestSpy})
 
 describe('unit.weatherClient', () => {
   let returnedPromise
+
+  afterAll(() => proxyquire.callThru())
 
   beforeEach(() => {
     returnedPromise = Promise.resolve()
@@ -13,12 +15,12 @@ describe('unit.weatherClient', () => {
 
   describe('.searchCitiesByName', () => {
     it('passes the correct options', async () => {
-      await weatherClient.searchCitiesByName('Columbus')
+      await metaWeatherClient.searchCitiesByName('Columbus')
 
       const expectedOptions = {
         method: 'GET',
         url: 'https://www.metaweather.com/api/location/search/',
-        qs: { query: 'Columbus' },
+        qs: {query: 'Columbus'},
         rejectUnauthorized: false,
         json: true,
       }
@@ -27,14 +29,14 @@ describe('unit.weatherClient', () => {
     })
 
     it('returns the promise from the request', () => {
-      let actual = weatherClient.searchCitiesByName('Columbus')
+      const actual = metaWeatherClient.searchCitiesByName('Columbus')
       expect(actual).toBe(returnedPromise)
     })
   })
 
   describe('getForecast', () => {
     it('passes the correct options', async () => {
-      await weatherClient.getForecast(1234, new Date(2018,8,18))
+      await metaWeatherClient.getForecast(1234, new Date(2018, 8, 18))
 
       const expectedOptions = {
         method: 'GET',
@@ -47,7 +49,7 @@ describe('unit.weatherClient', () => {
     })
 
     it('returns the promise from the request', () => {
-      let actual = weatherClient.getForecast(1234, new Date(2018,8,18))
+      const actual = metaWeatherClient.getForecast(1234, new Date(2018, 8, 18))
       expect(actual).toBe(returnedPromise)
     })
   })
