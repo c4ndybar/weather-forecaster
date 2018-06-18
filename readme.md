@@ -44,19 +44,22 @@ The weather state description will be based on the response from the [metaweathe
 ### Examples
 
 Example for Las Vegas on June, 15th...
+
+Weather API response:
 ```json
 [
   {
     "weather_state_abbr": "c",
     "applicable_date": "2018-06-15",
-    "the_temp": 50, //this is in Celsius
+    "the_temp": 50,
     "humidity": 10
   },
-  {...},
-  {...}
+  ...
 ]
-// expected description
-// Las Vegas will be hot, dry, and sunny.
+```
+Output should be...
+```
+Las Vegas will be hot, dry, and sunny.
 ```
 If humidity was at 20, it would be omitted and the description would read...
 ```
@@ -66,7 +69,7 @@ If the temperature was only 70°F and was also omitted, the description would re
 ```
 Las Vegas will be sunny.
 ```
-The description should always read in a gramatically correct way regardless of which forecast components are omitted from the description.
+The description should always read read naturally and use proper grammar.
 
 Finally, If the weather API does not have a forecast available for the provided city, display an appropriate message.
 ## Implementation

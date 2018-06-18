@@ -1,5 +1,14 @@
 
 module.exports = {
+  /**
+   *
+   * @param {string} city - Name of the city to get the forecast for.
+   * @param {Object} forecast - Object containing forecast information.
+   * @param {number} forecast.temperature - The forecast temperature in Celsius.
+   * @param {number} forecast.humidity - The forecast humidity level.
+   * @param {weatherState} forecast.weatherState - The forecast weather state.
+   * @returns {string}
+   */
   describe: (city, forecast) => {
     const temperature = getTemperatureDescription(forecast )
     const humidity = getHumidityDescription(forecast)

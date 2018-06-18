@@ -2,17 +2,22 @@ const forecastDescriptor = require('./forecastDescriptor')
 const {weatherAdapter, ForecastNotFoundError} = require('./adapters/weatherAdapter')
 
 module.exports = {
-  async getTodaysForecastDescription(city) {
+  /**
+   *
+   * @param cityName - Name of city to get the forecast description for.
+   * @returns {Promise<{string}>} - The forecast description.
+   */
+  async getTodaysForecastDescription(cityName) {
     try {
-      if (!city) {
+      if (!cityName) {
         return 'You must provide a city name to get the forecast.'
       }
 
-      const forecast = await weatherAdapter.getTodaysForecastForCity(city)
-      return forecastDescriptor.describe(city, forecast)
+      const forecast = await weatherAdapter.getTodaysForecastForCity(cityName)
+      return forecastDescriptor.describe(cityName, forecast)
     } catch (err) {
       if (err instanceof ForecastNotFoundError) {
-        return `Sorry, there is no forecast available for ${city}.`
+        return `Sorry, there is no forecast available for ${cityName}.`
       } else {
         throw err
       }
