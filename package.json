@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A project to practice unit testing skills",
   "main": "index.js",
+  "bin": {
+    "forecast": "./index.js"
+  },
   "scripts": {
     "autotest": "nodemon --exec jasmine",
     "test": "jasmine",
