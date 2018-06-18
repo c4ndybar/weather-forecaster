@@ -4,8 +4,8 @@ const {weatherAdapter, ForecastNotFoundError} = require('./adapters/weatherAdapt
 module.exports = {
   /**
    *
-   * @param cityName - Name of city to get the forecast description for.
-   * @returns {Promise<{string}>} - The forecast description.
+   * @param {string} cityName - Name of city to get the forecast description for.
+   * @return {Promise<{string}>} - The forecast description.
    */
   async getTodaysForecastDescription(cityName) {
     try {

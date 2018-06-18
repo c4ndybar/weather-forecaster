@@ -8,8 +8,8 @@ module.exports = {
   weatherAdapter: {
     /**
      *
-     * @param cityName - The name of the city to get the forecast for.
-     * @returns {Promise<{temperature, humidity, weatherState}>}
+     * @param {string} cityName - The name of the city to get the forecast for.
+     * @return {Promise<{temperature, humidity, weatherState}>}
      */
     async getTodaysForecastForCity(cityName) {
       const cityId = await getCityId(cityName)

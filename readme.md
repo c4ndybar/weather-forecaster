@@ -14,21 +14,26 @@ Las Vegas will be hot, dry, and sunny.
 ```
 
 ### Determining the text to display
-Use this table to determine when to say it's hot/cold, humid/dry, etc.
 
-| Weather component| Value         | Description Text  |
-| ---------------- |:-------------:|:------------------|
-| temperature         | >= 80°F | hot  |
-| temperature         | <= 55°F     |   cold |
-| temperature    | > 55°F and < 80°F      |    _no description_ |
-| humidity         | >= 60 | humid  |
-| humidity         | <= 20 | dry |
-| humidity    | > 10 and < 85      |    _no description_ |
+##### Temperature
+| temperature value | temperature description|
+|:-------------:|:------------------|
+| >= 80°F | hot  |
+| <= 55°F     |   cold |
+| > 55°F and < 80°F      |    _no description_ |
+
+##### Humidity
+| humidity value | humidity description|
+|:-------------:|:------------------|
+| >= 60 | humid  |
+| <= 20 | dry |
+| > 10 and < 85      |    _no description_ |
 
 
+##### Weather State
 The weather state description will be based on the response from the [metaweather api](https://www.metaweather.com/api/).  Use the weather state abbreviation code to determine the description text.
 
-| Weather state abbreviation code | Description Text  |
+| Weather state abbreviation (from api) | Weather state description|
 | ---------------- |:------------------|
 | sn | snowy |
 | sl | sleety |
@@ -45,7 +50,7 @@ The weather state description will be based on the response from the [metaweathe
 
 Example for Las Vegas on June, 15th...
 
-Weather API response:
+MetaWeather API response:
 ```json
 [
   {

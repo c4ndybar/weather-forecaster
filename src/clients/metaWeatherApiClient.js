@@ -3,8 +3,8 @@ const requestPromise = require('request-promise')
 module.exports = {
   /**
    *
-   * @param cityName - The name of the city to search for.
-   * @returns {Promise<{metaWeatherApiSearchResponse}>}
+   * @param {string} cityName - The name of the city to search for.
+   * @return {Promise<{metaWeatherApiSearchResponse}>}
    */
   searchCitiesByName(cityName) {
     const options = {
@@ -19,9 +19,9 @@ module.exports = {
   },
   /**
    *
-   * @param cityId - Meta Weather API City Id to get the forecast for.
-   * @param date - Date to get forecast for.
-   * @returns {Promise<{metaWeatherApiForecastByDateResponse}>} - 
+   * @param {number} cityId - Meta Weather API City Id to get the forecast for.
+   * @param {Date} date - Date to get forecast for.
+   * @return {Promise<{metaWeatherApiForecastByDateResponse}>} -
    */
   getForecast(cityId, date) {
     const options = {
