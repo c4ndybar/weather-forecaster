@@ -26,7 +26,7 @@ module.exports = {
   getForecast(cityId, date) {
     const options = {
       method: 'GET',
-      url: `https://www.metaweather.com/api/location/${cityId}/${date.getFullYear()}/${date.getMonth()}/${date.getDate()}/`,
+      url: `https://www.metaweather.com/api/location/${cityId}/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/`,
       rejectUnauthorized: false,
       json: true,
     }

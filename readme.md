@@ -74,7 +74,7 @@ If the temperature was only 70°F and was also omitted, the description would re
 ```
 Las Vegas will be sunny.
 ```
-The description should always read read naturally and use proper grammar.
+The description should always read naturally and use proper grammar.
 
 Finally, If the weather API does not have a forecast available for the provided city, display an appropriate message.
 ## Implementation
@@ -82,4 +82,4 @@ Use the [metaweather api](https://www.metaweather.com/api/) to get the weather f
 Note that the temperatures returned by the API are in Celsius.
 
 The function `getForecastDescription` in `src/forecaster.js` should return the description as described in the requirements.
-You can run the `index.js` script from the command line to run the app end to end.
+You can run the `index.js` script from the command line to run the app end to end.  For example by typing `node index.js columbus`.

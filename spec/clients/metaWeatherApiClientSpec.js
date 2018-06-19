@@ -40,7 +40,8 @@ describe('unit.weatherClient', () => {
 
       const expectedOptions = {
         method: 'GET',
-        url: 'https://www.metaweather.com/api/location/1234/2018/8/18/',
+        // the month in the js Date constructor is 0 based so we expect the month to be 9 in the url below.
+        url: 'https://www.metaweather.com/api/location/1234/2018/9/18/',
         rejectUnauthorized: false,
         json: true,
       }
