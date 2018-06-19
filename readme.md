@@ -2,10 +2,25 @@
 
 An application that will provide the weather forecast in plain English for the provided city name.
 
-## Requirements
-Make a weather forecast application that gives the a plain text description for the current day's weather forecast (like a weatherman might provide).  Use the API at [metaweather api](https://www.metaweather.com/api/) to get the weather forecast data for the current day.
+### Running the Application
+You can run the `index.js` script.
+```bash
+npm install
+node index.js <city name>`
+```
 
-The application should prompt for a city name and them provide the forecast for the city in the following format.
+Or, you can install this package globally and run from the command line with the `forecast` command.
+```bash
+npm install --global
+forecast <city name>
+```
+
+Please keep in mind that this application is hitting a free publically available API, so try not to hammer it :)
+
+## Requirements
+Make a weather forecast application that gives the a plain text description for the current day's weather forecast (like a weatherman might provide).  Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast data for the current day.
+
+The application should prompt for a city name and them provide the today's weather forecast for the city in the following format.
 ```
 <city> will be <temperature description>, <humidity description>, and <weather state description>.
 ```
@@ -78,18 +93,4 @@ Las Vegas will be sunny.
 The description should always read naturally and use proper grammar.
 
 Finally, If the weather API does not have a forecast available for the provided city, display an appropriate message.
-## Implementation
-Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast for the city.
-Note that the temperatures returned by the API are in Celsius.
 
-The function `getForecastDescription` in `src/forecaster.js` should return the description as described in the requirements.
-
-### Running the Application
-You can run the `index.js` script from the command line to run the app end to end.  For example by typing `node index.js <city name>`.
-
-You can optionally install this package globally and run from the command line by doing the following.
-```bash
-npm install --global
-forecast <city name>
-```
-If you install globally, be aware that any changes you make will not be reflected immediately.  You have to reinstall to see any changes.
