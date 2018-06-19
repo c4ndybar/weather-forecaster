@@ -31,18 +31,18 @@ function buildDescription(city, temperature, humidity, weatherState) {
   return `${description}${weatherState}.`
 }
 
-function getTemperatureDescription(forecast) {
-  if (forecast.temperature >= 80) {
+function getTemperatureDescription(temperature) {
+  if (temperature >= 80) {
     return 'hot'
-  } else if (forecast.temperature <= 55) {
+  } else if (temperature <= 55) {
     return 'cold'
   }
 }
 
-function getHumidityDescription(forecast) {
-  if (forecast.humidity >= 60) {
+function getHumidityDescription(humidity) {
+  if (humidity >= 60) {
     return 'humid'
-  } else if (forecast.humidity <= 20) {
+  } else if (humidity <= 20) {
     return 'dry'
   }
 }

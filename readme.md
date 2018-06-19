@@ -6,7 +6,7 @@ An application that will provide the weather forecast in plain English for the p
 You can run the `index.js` script.
 ```bash
 npm install
-node index.js <city name>`
+node index.js <city name>
 ```
 
 Or, you can install this package globally and run from the command line with the `forecast` command.
