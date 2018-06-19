@@ -1,4 +1,3 @@
-
 module.exports = {
   /**
    *
@@ -9,12 +8,12 @@ module.exports = {
    * @param {weatherState} forecast.weatherState - The forecast weather state.
    * @return {string}
    */
-  describe: (city, forecast) => {
-    const temperature = getTemperatureDescription(forecast )
-    const humidity = getHumidityDescription(forecast)
-    const weatherState = forecast.weatherState.description
+  describe(city, {temperature, humidity, weatherState}) {
+    const temperatureDescription = getTemperatureDescription(temperature)
+    const humidityDescription = getHumidityDescription(humidity)
+    const weatherStateDescription = weatherState.description
 
-    return buildDescription(city, temperature, humidity, weatherState)
+    return buildDescription(city, temperatureDescription, humidityDescription, weatherStateDescription)
   },
 }
 

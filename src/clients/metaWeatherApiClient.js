@@ -4,7 +4,7 @@ module.exports = {
   /**
    *
    * @param {string} cityName - The name of the city to search for.
-   * @return {Promise<{metaWeatherApiSearchResponse}>}
+   * @return {Promise<{metaWeatherApiLocationSearchResponse}>} - See documentation at https://www.metaweather.com/api/#locationsearch
    */
   searchCitiesByName(cityName) {
     const options = {
@@ -21,7 +21,7 @@ module.exports = {
    *
    * @param {number} cityId - Meta Weather API City Id to get the forecast for.
    * @param {Date} date - Date to get forecast for.
-   * @return {Promise<{metaWeatherApiForecastByDateResponse}>} -
+   * @return {Promise<{metaWeatherApiLocationDayResponse}>} - See documentation at https://www.metaweather.com/api/#locationday
    */
   getForecast(cityId, date) {
     const options = {

@@ -15,7 +15,6 @@ module.exports = {
       const cityId = await getCityId(cityName)
 
       const forecasts = await metaWeatherClient.getForecast(cityId, new Date())
-
       return transformForecast(forecasts[0])
     },
   },
