@@ -43,7 +43,7 @@ Las Vegas will be hot, dry, and sunny.
 |:-------------:|:------------------|
 | >= 60 | humid  |
 | <= 20 | dry |
-| > 10 and < 85      |    _no description_ |
+| > 20 and < 60      |    _no description_ |
 
 
 ##### Weather State
