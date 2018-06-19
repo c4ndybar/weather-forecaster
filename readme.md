@@ -3,19 +3,19 @@
 An application that will provide the weather forecast in plain English for the provided city name.
 
 ### Running the Application
-You can run the `index.js` script.
+Run the `index.js` script.
 ```bash
 npm install
 node index.js <city name>
 ```
 
-Or, you can install this package globally and run from the command line with the `forecast` command.
+Or, install this package globally and run from the command line with the `forecast` command.
 ```bash
 npm install --global
 forecast <city name>
 ```
 
-Please keep in mind that this application is hitting a free publically available API, so try not to hammer it :)
+*Please keep in mind that this application is hitting a free publically available API, so try not to hammer it :)*
 
 ## Requirements
 Make a weather forecast application that gives the a plain text description for the current day's weather forecast (like a weatherman might provide).  Use the [metaweather api](https://www.metaweather.com/api/) to get the weather forecast data for the current day.
