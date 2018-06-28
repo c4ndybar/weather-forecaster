@@ -13,14 +13,13 @@ module.exports = {
      */
     async getTodaysForecastForCity(cityName) {
       const cityId = await getCityId(cityName)
-
       const forecasts = await metaWeatherClient.getForecast(cityId, new Date())
+
       return transformForecast(forecasts[0])
     },
   },
   ForecastNotFoundError,
 }
-
 
 async function getCityId(cityName) {
   const cities = await metaWeatherClient.searchCitiesByName(cityName)
